@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    depends_on:
+      - redis
+    volumes:
+      - .:/app
+    ports:
+      - "7860:7860"
+    environment:
+      - PYTHONUNBUFFERED=1
+
+  redis:
+    image: "redis:alpine"
